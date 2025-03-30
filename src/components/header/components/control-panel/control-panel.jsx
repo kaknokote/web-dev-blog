@@ -2,13 +2,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon } from '../../../../components';
 import { ROLE } from '../../../../constants';
-import styled from 'styled-components';
 import {
 	selectUserRole,
 	selectUserLogin,
 	selectUserSession,
 } from '../../../../selectors';
 import { logout } from '../../../../actions';
+import styled from 'styled-components';
 
 const RightAligned = styled.div`
 	display: flex;
@@ -28,6 +28,11 @@ const ControlPanelContainer = ({ className }) => {
 	const login = useSelector(selectUserLogin);
 	const session = useSelector(selectUserSession);
 
+	const onLogout = () => {
+		dispatch(logout(session));
+		sessionStorage.removeItem('userData');
+	};
+
 	return (
 		<div className={className}>
 			<RightAligned>
@@ -42,7 +47,7 @@ const ControlPanelContainer = ({ className }) => {
 							id="fa-sign-out"
 							size="24px"
 							margin="0 0 0 10px"
-							onClick={() => dispatch(logout(session))}
+							onClick={onLogout}
 						/>
 					</>
 				)}

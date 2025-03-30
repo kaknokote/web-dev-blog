@@ -14,11 +14,11 @@ export const Button = styled(ButtonContainer)`
 	align-items: center;
 	font-size: 18px;
 	width: ${({ width = '100%' }) => width};
-	height: 42px;
+	height: 32px;
 	border: 1px solid #000;
 	background-color: #eee;
 
 	&:hover {
-		cursor: pointer;
+		cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 	}
 `;

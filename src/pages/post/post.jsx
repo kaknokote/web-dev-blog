@@ -47,7 +47,7 @@ const PostContainer = ({ className }) => {
 				</div>
 			</PrivateContent>
 		) : (
-			<div>
+			<div className={className}>
 				<PostContent post={post} />
 				<Comments comments={post.comments} postId={post.id} />
 			</div>
